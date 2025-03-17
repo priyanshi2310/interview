@@ -24,7 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     if (name.isEmpty || email.isEmpty || password.isEmpty) {
       setState(() {
-        errorMessage = 'Please fill in all fields (Name, Email, and Password).';
+        errorMessage = 'Please fill Email and Password.';
       });
     } else if (!currentvalue) {
       setState(() {
@@ -153,7 +153,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: TextField(
                   controller: passwordController,
                   decoration: InputDecoration(
-                    border: const UnderlineInputBorder(),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: AppColor.bluecolor),
                     ),
@@ -237,12 +236,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
               if (errorMessage != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Text(
-                    errorMessage!,
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 0.018 * height,
-                      fontWeight: FontWeight.w600,
+                  child: Container(
+                    height: 30,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.red),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.warning, color: Colors.red),
+                        Text(
+                          errorMessage!,
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 0.018 * height,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
