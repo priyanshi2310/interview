@@ -122,7 +122,9 @@ class _CalculatorState extends State<Calculator> {
               _buildButton('+'),
             ],
           ),
-          Row(children: [_buildButton('=')]),
+          Row(children: [_buildButton('=')
+          ]
+          ),
         ],
       ),
     );
