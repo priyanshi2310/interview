@@ -82,6 +82,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffFFFFFF),
+        shape: CircleBorder(),
+        onPressed: () {
+          Navigator.pushNamed(context, 'EditScreen');
+        },
+        child: Icon(Icons.add, color: Color(0xffEEA743)),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 72, left: 20, right: 20),
         child: Column(
