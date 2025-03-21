@@ -31,8 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         errorMessage = 'Please agree to the terms and conditions.';
       });
     } else {
-      // Navigate to the home screen after a successful signup
-      Navigator.pushNamed(context, 'HomeScreen');
+     Navigator.pushNamed(context, 'HomeScreen');
     }
   }
 
