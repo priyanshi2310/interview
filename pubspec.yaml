@@ -39,6 +39,9 @@ dependencies:
   shared_preferences:
   flutter_slidable:
   get: ^4.7.2
+  expressions:
+
+
  
 
   

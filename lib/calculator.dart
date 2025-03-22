@@ -1,12 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
+import 'package:expressions/expressions.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
 
   @override
- 
   _CalculatorState createState() => _CalculatorState();
 }
 
@@ -41,14 +39,26 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 
-  double _calculateResult(String expression) {
-    // You can add more logic here for complex expressions
-    // A simple implementation for example
+ 
+  dynamic _calculateResult(String expression) {
     try {
-      return double.parse(expression);
+      final expr = Expression.parse(expression);
+      final evaluator = ExpressionEvaluator();
+      final result = evaluator.eval(expr, {});
+      if (result is double) {
+       
+        if (result == result.toInt()) {
+          return result.toInt(); // Convert to integer if it's a whole number
+        } else {
+          return result; // Return as double if not a whole number
+        }
+      } else if (result is int) {
+        return result; // Return as integer if the result is an integer
+      }
     } catch (e) {
-      return 0;
+      return 0; // Return 0 if there's an error
     }
+    return 0; // Return 0 for other cases
   }
 
   Widget _buildButton(String buttonText) {
@@ -122,9 +132,7 @@ class _CalculatorState extends State<Calculator> {
               _buildButton('+'),
             ],
           ),
-          Row(children: [_buildButton('=')
-          ]
-          ),
+          Row(children: [_buildButton('=')]),
         ],
       ),
     );
