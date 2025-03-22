@@ -84,7 +84,7 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  @override
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Calculator'), backgroundColor: Colors.blue),
